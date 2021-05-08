@@ -1,6 +1,7 @@
 let canvas = document.getElementById("snake");
 let context = canvas.getContext("2d");
-let box = 32; //Tamanho em pixel de cada Quadrado
+let box = 16;
+let quantity = 32; //Tamanho em pixel de cada Quadrado
 
 const snake = [];
 snake[0] = {
@@ -13,7 +14,7 @@ let food = {};
 
 function criarBG() {
   context.fillStyle = "lightGreen";
-  context.fillRect(0, 0, 16 * box, 16 * box);
+  context.fillRect(0, 0, quantity * box, quantity * box);
 }
 
 function criarCobrinha() {
@@ -24,8 +25,8 @@ function criarCobrinha() {
 }
 
 function criaComida() {
-  food.x = Math.floor(Math.random() * 16) * box;
-  food.y = Math.floor(Math.random() * 16) * box;
+  food.x = Math.floor(Math.random() * quantity) * box;
+  food.y = Math.floor(Math.random() * quantity) * box;
 }
 
 function desenhaComida() {
@@ -53,10 +54,10 @@ function update(event) {
 
 function iniciarJogo() {
   //Volta a "Cobrinha" quando ela passa dos limites da área do jogo
-  if (snake[0].x > 15 * box) snake[0].x = 0 * box;
-  if (snake[0].x < 0 * box) snake[0].x = 16 * box;
-  if (snake[0].y > 15 * box) snake[0].y = 0 * box;
-  if (snake[0].y < 0 * box) snake[0].y = 16 * box;
+  if (snake[0].x > (quantity - 1) * box) snake[0].x = 0 * box;
+  if (snake[0].x < 0 * box) snake[0].x = quantity * box;
+  if (snake[0].y > (quantity - 1) * box) snake[0].y = 0 * box;
+  if (snake[0].y < 0 * box) snake[0].y = quantity * box;
 
   for (let i = 1; i < snake.length; i++) {
     if (snake[0].x === snake[i].x && snake[0].y === snake[i].y) {

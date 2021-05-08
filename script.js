@@ -9,10 +9,7 @@ snake[0] = {
 };
 
 let direction = "right";
-let food = {
-  x: Math.floor(Math.random() * 16) * box,
-  y: Math.floor(Math.random() * 16) * box,
-};
+let food = {};
 
 function criarBG() {
   context.fillStyle = "lightGreen";
@@ -24,6 +21,11 @@ function criarCobrinha() {
     context.fillStyle = "green";
     context.fillRect(snake[i].x, snake[i].y, box, box);
   }
+}
+
+function criaComida() {
+  food.x = Math.floor(Math.random() * 16) * box;
+  food.y = Math.floor(Math.random() * 16) * box;
 }
 
 function desenhaComida() {
@@ -71,7 +73,11 @@ function iniciarJogo() {
   if (direction === "down") snakeY += box;
 
   //Movimento da Cobra: Renderiza nova posição
-  snake.pop();
+  if (snakeX !== food.x || snakeY !== food.y) {
+    snake.pop();
+  } else {
+    criaComida();
+  }
   let newHead = {
     x: snakeX,
     y: snakeY,
@@ -79,6 +85,7 @@ function iniciarJogo() {
   snake.unshift(newHead);
 }
 
+criaComida();
 iniciarJogo();
 
 let jogo = setInterval(iniciarJogo, 100);

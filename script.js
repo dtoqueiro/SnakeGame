@@ -8,6 +8,8 @@ snake[0] = {
   y: 8 * box,
 };
 
+let direction = "right";
+
 function criarBG() {
   context.fillStyle = "lightGreen";
   context.fillRect(0, 0, 16 * box, 16 * box);
@@ -20,5 +22,29 @@ function criarCobrinha() {
   }
 }
 
-criarBG();
-criarCobrinha();
+function iniciarJogo() {
+  criarBG();
+  criarCobrinha();
+
+  //Criando ponto de Partida
+  let snakeX = snake[0].x;
+  let snakeY = snake[0].y;
+
+  //Movimento da Cobra:  Direções
+  if (direction === "right") snakeX += box;
+  if (direction === "left") snakeX -= box;
+  if (direction === "up") snakeY -= box;
+  if (direction === "down") snakeY += box;
+
+  //Movimento da Cobra: Renderiza nova posição
+  snake.pop();
+  let newHead = {
+    x: snakeX,
+    y: snakeY,
+  };
+  snake.unshift(newHead);
+}
+
+iniciarJogo();
+
+let jogo = setInterval(iniciarJogo, 100);

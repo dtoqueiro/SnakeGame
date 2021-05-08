@@ -1,2 +1,3 @@
-# SnakeGame
-Recriando o Jogo da Cobrinha com JS
+# Snake Game
+
+Recriando o Jogo da "Cobrinha" com JS

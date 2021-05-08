@@ -40,6 +40,12 @@ function update(event) {
 }
 
 function iniciarJogo() {
+  //Volta a "Cobrinha" quando ela passa dos limites da área do jogo
+  if (snake[0].x > 15 * box) snake[0].x = 0 * box;
+  if (snake[0].x < 0 * box) snake[0].x = 16 * box;
+  if (snake[0].y > 15 * box) snake[0].y = 0 * box;
+  if (snake[0].y < 0 * box) snake[0].y = 16 * box;
+
   criarBG();
   criarCobrinha();
 

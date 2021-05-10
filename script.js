@@ -1,10 +1,12 @@
 let canvas = document.getElementById("snake");
 let context = canvas.getContext("2d");
 let menu = document.getElementById("menu");
+let replayBtn = document.getElementById("replay");
 let box = 16;
 let quantity = 32; //Tamanho em pixel de cada Quadrado
 
-const snake = [];
+let jogo = null;
+let snake = [];
 let direction = "right";
 snake[0] = {
   x: (quantity / 2) * box,
@@ -76,6 +78,23 @@ function gameOver() {
   menu.style.display = "block";
 }
 
+function replay() {
+  menu.style.display = "none";
+  snake = [];
+  direction = "right";
+  snake[0] = {
+    x: (quantity / 2) * box,
+    y: (quantity / 2) * box,
+    dir: direction,
+  };
+  speed = 100;
+  criaComida();
+  iniciarJogo();
+  jogo = setInterval(iniciarJogo, speed);
+}
+
+replayBtn.addEventListener("click", replay);
+
 //Colisão com comida
 function colisaoComida(snakeX, snakeY, foodX, foodY) {
   if (snakeX !== foodX || snakeY !== foodY) return true;
@@ -118,4 +137,4 @@ function iniciarJogo() {
 criaComida();
 iniciarJogo();
 
-let jogo = setInterval(iniciarJogo, speed);
+jogo = setInterval(iniciarJogo, speed);

@@ -49,17 +49,20 @@ li {
   font-size: 1.5em;
   margin-bottom: 2rem;
 }
-a {
-  text-decoration: none;
+
+button {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1em;
   color: rgb(44, 139, 44);
   font-weight: 700;
-  border: solid 2px;
+  border: solid 3px;
   border-radius: 8px;
   padding: 10px;
   background-color: rgb(195, 224, 195);
+  transition: 500ms;
 }
 
-a:hover {
+button:hover {
   background-color: rgb(46, 99, 46);
   color: rgb(69, 241, 69);
 }

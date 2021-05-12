@@ -1,8 +1,10 @@
 # Snake Game
 
-Recriando o Jogo da "Cobrinha" com JS
+## Recriando o Jogo da "Cobrinha" com JS
 
-Veja o jogo [aqui](https://dtoqueiro.github.io/SnakeGame/)
+## Link da página do jogo
+
+Veja o jogo 👉 [aqui](https://dtoqueiro.github.io/SnakeGame/) 👈
 
 ## Preview
 

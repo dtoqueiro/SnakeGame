@@ -1,7 +1,8 @@
 let canvas = document.getElementById("snake");
 let context = canvas.getContext("2d");
 let menu = document.getElementById("menu");
-let replayBtn = document.getElementById("replay");
+let btn = document.getElementById("replay");
+let message = document.getElementById("message");
 let box = 16;
 let quantity = 32; //Tamanho em pixel de cada Quadrado
 
@@ -17,7 +18,7 @@ let food = {};
 let speed = 100; //Quanto Maior Mais Devagar, e Quanto Menor Mais Rápido
 
 function criarBG() {
-  context.fillStyle = "lightGreen";
+  context.fillStyle = "rgb(195, 224, 195)";
   context.fillRect(0, 0, quantity * box, quantity * box);
 }
 
@@ -75,6 +76,8 @@ function colisaoCobra() {
   }
 }
 function gameOver() {
+  message.innerText = "GAME OVER";
+  btn.innerText = "Replay";
   menu.style.display = "block";
 }
 
@@ -93,7 +96,7 @@ function replay() {
   jogo = setInterval(iniciarJogo, speed);
 }
 
-replayBtn.addEventListener("click", replay);
+btn.addEventListener("click", replay);
 
 //Colisão com comida
 function colisaoComida(snakeX, snakeY, foodX, foodY) {
@@ -133,8 +136,3 @@ function iniciarJogo() {
   };
   snake.unshift(newHead);
 }
-
-criaComida();
-iniciarJogo();
-
-jogo = setInterval(iniciarJogo, speed);
